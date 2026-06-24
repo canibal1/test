@@ -1,1 +1,4 @@
-bash -lc 'killall Xcode 2>/dev/null || true; killall Simulator 2>/dev/null || true; xcrun simctl shutdown all 2>/dev/null || true; killall com.apple.CoreSimulator.CoreSimulatorService 2>/dev/null || true; sleep 3; echo "===== iOS 26.5 iPhone 17 devices ====="; xcrun simctl list devices "iOS 26.5" | grep -Ei "iPhone 17|17 iOS|Booted|Shutdown"; echo "===== booting latest iPhone 17 ====="; ID=$(xcrun simctl list devices "iOS 26.5" | grep -Ei "iPhone 17|iPhone 17 iOS 26.5" | head -1 | sed -E "s/.*\(([A-F0-9-]{36})\).*/\1/"); echo "ID=$ID"; xcrun simctl boot "$ID" 2>/dev/null || true; xcrun simctl bootstatus "$ID" -b; open -a Simulator; open ios/Runner.xcworkspace 2>/dev/null || open ios/Runner.xcodeproj; echo "Now check Xcode > Product > Destination"'
+killall Xcode 2>/dev/null || true
+killall Simulator 2>/dev/null || true
+killall com.apple.CoreSimulator.CoreSimulatorService 2>/dev/null || true
+open -a Xcode
