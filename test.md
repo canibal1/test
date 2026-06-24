@@ -1,1 +1,1 @@
-uname -m && arch && xcodebuild -version && xcode-select -p && xcrun simctl list runtimes | grep -E "iOS|26.5|18.4" && xcrun simctl list devices available | grep -E "iPhone 17|iPhone 16|26.5|18.4" && xcodebuild -showdestinations -workspace ios/Runner.xcworkspace -scheme RunnerTests
+/usr/bin/arch -arm64 xcodebuild -showdestinations -workspace ios/Runner.xcworkspace -scheme RunnerTests
