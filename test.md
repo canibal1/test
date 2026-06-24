@@ -1,12 +1,8 @@
-cd ios
-pod deintegrate
-pod install
-cd ..
-fvm flutter clean
-fvm flutter pub get
-
-rm -rf ~/Library/Developer/Xcode/DerivedData/*
-killall Xcode 2>/dev/null || true
-killall Simulator 2>/dev/null || true
-killall com.apple.CoreSimulator.CoreSimulatorService 2>/dev/null || true
-open ios/Runner.xcworkspace
+arch -arm64 xcodebuild test \
+  -workspace ios/Runner.xcworkspace \
+  -scheme RunnerTests \
+  -derivedDataPath code_coverage_results \
+  -destination 'platform=iOS Simulator,name=iPhone 17,OS=26.5,arch=arm64' \
+  -enableCodeCoverage YES \
+  ARCHS=arm64 \
+  ONLY_ACTIVE_ARCH=YES
