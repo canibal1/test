@@ -1,9 +1,12 @@
+cd ios
+pod deintegrate
+pod install
+cd ..
+fvm flutter clean
+fvm flutter pub get
+
+rm -rf ~/Library/Developer/Xcode/DerivedData/*
 killall Xcode 2>/dev/null || true
 killall Simulator 2>/dev/null || true
 killall com.apple.CoreSimulator.CoreSimulatorService 2>/dev/null || true
-open -a Xcode
-
-
-
-
-grep -R "EXCLUDED_ARCHS\|VALID_ARCHS\|ONLY_ACTIVE_ARCH\|ARCHS" ios/Runner.xcodeproj ios/Podfile ios/Pods/Pods.xcodeproj 2>/dev/null
+open ios/Runner.xcworkspace
